@@ -1,25 +1,28 @@
-.login-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Plano de fundo */
+.login-body {
     background-image: url(/assets/img/bg-login.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.login-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-container > main {
-    height: 607px;	
-    width: 726px;	
+    width: 100%;
+    max-width: 726px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 90px 130px;
+    padding: 60px 130px;
 }
 
 .login-container > main > header > img {
@@ -94,8 +97,16 @@
 
 @media (max-width: 600px) {
     .login-container > main {
-        padding-right: 80px;
-        padding-left: 80px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .login-container > main input {
+      margin-bottom: 0;
+    }
+
+    .login-container > main button {
+      margin-top: 0;
     }
 }
 
