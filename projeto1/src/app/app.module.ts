@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ngxToastrConstants } from './core/constants/ngx-toastr.constants';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './core/services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,13 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
     AccessControlModule,
     MainModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
