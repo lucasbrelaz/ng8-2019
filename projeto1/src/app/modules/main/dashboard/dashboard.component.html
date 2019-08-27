@@ -5,6 +5,11 @@
         </div>
     </div>
     <div class="row">
+      <div class="col-md-12">
+        <div>Exibindo {{pagination?.per_page}} de {{pagination?.total}}</div>
+      </div>
+    </div>
+    <div class="row">
         <div class="col-md-12 mt-2">
             <div *ngIf="loading">
                 <i class="fas fa-circle-notch fa-spin"></i> Carregando...
@@ -30,5 +35,21 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled' : pagination?.page < pagination?.total_pages}"><a class="page-link" href="javascript:void(0)" (click)="previousPage()">Previous</a></li>
+            <li *ngIf="pagination?.page >= pagination?.total_pages" class="page-item"><a class="page-link" href="javascript:void(0)" (click)="jumpToPage(pagination?.page - 1)">{{pagination?.page - 1}}</a></li>
+            <li class="page-item active"><a class="page-link" href="javascript:void(0)" (click)="jumpToPage(pagination?.page)">{{pagination?.page}}</a></li>
+            <li *ngIf="pagination?.page < pagination?.total_pages" class="page-item"><a class="page-link" href="javascript:void(0)" (click)="jumpToPage(pagination?.page + 1)">{{pagination?.page + 1}}</a></li>
+            <li class="page-item" [ngClass]="{'disabled' : pagination?.page >= pagination?.total_pages}"><a class="page-link" href="javascript:void(0)" (click)="nextPage()">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-12">
+        Página {{pagination?.page}} de {{pagination?.total_pages}}
+      </div>
     </div>
 </div>

@@ -11,7 +11,13 @@ export class UserService {
     this.url = `${environment.api_url}users`;
   }
 
-  public getAll() {
-    return this.httpClient.get(this.url);
+  public getAll(page?: number) {
+    let users: any;
+    if (page) {
+      users = this.httpClient.get(`${this.url}?page=${page}`);
+    } else {
+      users = this.httpClient.get(this.url);
+    }
+    return users;
   }
 }
